@@ -1,10 +1,13 @@
 package com.happy.happy.Models;
 
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jdk.nashorn.internal.ir.annotations.Reference;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 
@@ -32,6 +35,11 @@ public class Person {
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "personTypeId", referencedColumnName = "id")
     private PersonType personTypeId;
+
+    @OneToMany(mappedBy = "person", cascade = CascadeType.PERSIST)
+    @JsonIdentityReference(alwaysAsId = true)
+    @JsonIgnore
+    List<Activity> activities;
 
     public Person(){
 
