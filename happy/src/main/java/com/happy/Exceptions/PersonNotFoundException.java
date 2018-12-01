@@ -1,4 +1,4 @@
-package com.happy.happy.Exceptions;
+package com.happy.Exceptions;
 
 public class PersonNotFoundException extends RuntimeException{
     public PersonNotFoundException(Integer id){

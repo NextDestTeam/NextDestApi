@@ -1,4 +1,4 @@
-package com.happy.happy;
+package com.happy;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

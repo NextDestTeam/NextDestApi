@@ -1,32 +1,38 @@
-package com.happy.happy.Models;
+package com.happy.Models;
 
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
+
 import java.util.List;
+
+import static javax.persistence.GenerationType.SEQUENCE;
 
 @Data
 @Entity
-@Table(name = "person_type")
-public class PersonType {
+@Table(name = "event_type")
+public class EventType {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=SEQUENCE)
     @Column(name = "id")
     private Integer id;
 
     @Column(name = "name")
     private String name;
 
+    @OneToMany(mappedBy = "eventType", cascade = CascadeType.PERSIST)
+    @JsonIdentityReference(alwaysAsId = true)
+    @JsonIgnore
+    List<Activity> activities;
+
+    public EventType() {
+    }
+
     public Integer getId() {
         return id;
     }
-
-    @OneToMany(mappedBy = "personTypeId", cascade = CascadeType.PERSIST)
-    @JsonIdentityReference(alwaysAsId = true)
-    @JsonIgnore
-    List<Person> persons;
 
     public void setId(Integer id) {
         this.id = id;
@@ -40,11 +46,11 @@ public class PersonType {
         this.name = name;
     }
 
-    public List<Person> getPersons() {
-        return persons;
+    public List<Activity> getActivities() {
+        return activities;
     }
 
-    public void setPersons(List<Person> persons) {
-        this.persons = persons;
+    public void setActivities(List<Activity> activities) {
+        this.activities = activities;
     }
 }

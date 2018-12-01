@@ -1,8 +1,7 @@
-package com.happy.happy.Models;
+package com.happy.Models;
 
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jdk.nashorn.internal.ir.annotations.Reference;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -41,16 +40,20 @@ public class Person {
     @JsonIgnore
     List<Activity> activities;
 
+    @OneToMany(mappedBy = "personId", cascade = CascadeType.PERSIST)
+    @JsonIdentityReference(alwaysAsId = true)
+    @JsonIgnore
+    List<PersonActivityComment> comments;
+
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "personId")
+    @JsonIdentityReference(alwaysAsId = true)
+    @JsonIgnore
+    private Login loginId;
+
+
     public Person(){
 
-    }
-
-    public Person(String firstName, String lastName, String email, Date age, PersonType personTypeId) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.age = age;
-        this.personTypeId = personTypeId;
     }
 
     public Integer getId() {
@@ -99,5 +102,29 @@ public class Person {
 
     public void setPersonTypeId(PersonType personTypeId) {
         this.personTypeId = personTypeId;
+    }
+
+    public List<Activity> getActivities() {
+        return activities;
+    }
+
+    public void setActivities(List<Activity> activities) {
+        this.activities = activities;
+    }
+
+    public List<PersonActivityComment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<PersonActivityComment> comments) {
+        this.comments = comments;
+    }
+
+    public Login getLoginId() {
+        return loginId;
+    }
+
+    public void setLoginId(Login loginId) {
+        this.loginId = loginId;
     }
 }

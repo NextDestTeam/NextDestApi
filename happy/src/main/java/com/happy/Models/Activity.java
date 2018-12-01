@@ -1,4 +1,4 @@
-package com.happy.happy.Models;
+package com.happy.Models;
 
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -38,6 +38,9 @@ public class Activity {
     @Column(name = "date")
     private Date date;
 
+    @Column(name = "image")
+    private String image;
+
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "person", referencedColumnName = "id")
     private Person person;
@@ -45,6 +48,11 @@ public class Activity {
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "eventType", referencedColumnName = "id")
     private EventType eventType;
+
+    @OneToMany(mappedBy = "comment", cascade = CascadeType.PERSIST)
+    @JsonIdentityReference(alwaysAsId = true)
+    @JsonIgnore
+    private List<PersonActivityComment> personActivityComments;
 
     public Activity() {
     }
@@ -119,5 +127,21 @@ public class Activity {
 
     public void setEventType(EventType eventType) {
         this.eventType = eventType;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public List<PersonActivityComment> getPersonActivityComments() {
+        return personActivityComments;
+    }
+
+    public void setPersonActivityComments(List<PersonActivityComment> personActivityComments) {
+        this.personActivityComments = personActivityComments;
     }
 }

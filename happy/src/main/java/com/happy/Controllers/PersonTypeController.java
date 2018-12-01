@@ -1,8 +1,8 @@
-package com.happy.happy.Controllers;
+package com.happy.Controllers;
 
-import com.happy.happy.Exceptions.PersonTypeNorFoundException;
-import com.happy.happy.Models.PersonType;
-import com.happy.happy.Repositories.PersonTypeRepository;
+import com.happy.Exceptions.PersonTypeNorFoundException;
+import com.happy.Models.PersonType;
+import com.happy.Repositories.PersonTypeRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
