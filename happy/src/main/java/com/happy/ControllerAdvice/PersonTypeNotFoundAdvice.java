@@ -10,7 +10,7 @@ public class PersonTypeNotFoundAdvice {
     @ResponseBody
     @ExceptionHandler(PersonTypeNorFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    String employeeNotFoundHandler(PersonTypeNorFoundException ex) {
+    String personTypeNotFoundHandler(PersonTypeNorFoundException ex) {
         return ex.getMessage();
     }
 }

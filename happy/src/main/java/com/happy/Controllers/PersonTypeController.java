@@ -1,37 +1,45 @@
 package com.happy.Controllers;
 
+import com.happy.DTO.PersonTypeDTO;
 import com.happy.Exceptions.PersonTypeNorFoundException;
 import com.happy.Models.PersonType;
-import com.happy.Repositories.PersonTypeRepository;
+import com.happy.Services.PersonTypeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RestController
 public class PersonTypeController {
-    private final PersonTypeRepository repository;
+    @Autowired
+    private final PersonTypeService personTypeService;
 
-    public PersonTypeController(PersonTypeRepository repository) {
-        this.repository = repository;
+    public PersonTypeController(PersonTypeService personTypeService) {
+        this.personTypeService = personTypeService;
     }
 
     @GetMapping("/personTypes")
     public List<PersonType> findAllPersonTypes(){
-        return repository.findAll();
+        return personTypeService.getAllPersonTypes();
     }
 
     @GetMapping("/personType/{id}")
     public PersonType findPersonTypeById(@PathVariable Integer id){
-        return repository.findById(id)
-                .orElseThrow(() -> new PersonTypeNorFoundException(id));
+        return personTypeService.getPersonTypeById(id);
     }
 
-    @PostMapping("/persons")
-    public PersonType newType(@RequestBody PersonType personType){
-        return repository.save(personType);
+    @PutMapping("/personType/{id}")
+    public PersonType createOrReplacePersonType(@RequestBody PersonTypeDTO personType, @PathVariable Integer id){
+        return personTypeService.addOrReplace(personType, id);
     }
 
-    @DeleteMapping("/person/{id}")
+    @PostMapping("/personTypes")
+    public PersonType newType(@RequestBody PersonTypeDTO personType){
+        return personTypeService.newPersonType(personType);
+    }
+
+    @DeleteMapping("/personType/{id}")
     public void deletePersonType(@PathVariable Integer id){
-        repository.deleteById(id);
+        personTypeService.removePersonType(id);
     }
 }

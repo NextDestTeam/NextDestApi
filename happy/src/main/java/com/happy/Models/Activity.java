@@ -46,13 +46,26 @@ public class Activity {
     private Person person;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "eventType", referencedColumnName = "id")
-    private EventType eventType;
+    @JoinColumn(name = "activityType", referencedColumnName = "id")
+    private ActivityType activityType;
 
-    @OneToMany(mappedBy = "comment", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "activityId", cascade = CascadeType.PERSIST)
     @JsonIdentityReference(alwaysAsId = true)
     @JsonIgnore
     private List<PersonActivityComment> personActivityComments;
+
+    @OneToMany(mappedBy = "activityReactionId", cascade = CascadeType.PERSIST)
+    @JsonIdentityReference(alwaysAsId = true)
+    @JsonIgnore
+    private List<Reaction> reactions;
+
+    public List<Reaction> getReactions() {
+        return reactions;
+    }
+
+    public void setReactions(List<Reaction> reactions) {
+        this.reactions = reactions;
+    }
 
     public Activity() {
     }
@@ -121,12 +134,12 @@ public class Activity {
         this.person = person;
     }
 
-    public EventType getEventType() {
-        return eventType;
+    public ActivityType getEventType() {
+        return activityType;
     }
 
-    public void setEventType(EventType eventType) {
-        this.eventType = eventType;
+    public void setEventType(ActivityType eventType) {
+        this.activityType = eventType;
     }
 
     public String getImage() {
@@ -143,5 +156,13 @@ public class Activity {
 
     public void setPersonActivityComments(List<PersonActivityComment> personActivityComments) {
         this.personActivityComments = personActivityComments;
+    }
+
+    public ActivityType getActivityType() {
+        return activityType;
+    }
+
+    public void setActivityType(ActivityType activityType) {
+        this.activityType = activityType;
     }
 }

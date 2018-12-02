@@ -12,8 +12,8 @@ import static javax.persistence.GenerationType.SEQUENCE;
 
 @Data
 @Entity
-@Table(name = "event_type")
-public class EventType {
+@Table(name = "activity_type")
+public class ActivityType {
     @Id
     @GeneratedValue(strategy=SEQUENCE)
     @Column(name = "id")
@@ -22,12 +22,17 @@ public class EventType {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "eventType", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "activityType", cascade = CascadeType.PERSIST)
     @JsonIdentityReference(alwaysAsId = true)
     @JsonIgnore
-    List<Activity> activities;
+    private List<Activity> activities;
 
-    public EventType() {
+    @OneToMany(mappedBy = "activityTypeId", cascade = CascadeType.PERSIST)
+    @JsonIdentityReference(alwaysAsId = true)
+    @JsonIgnore
+    private List<PersonPreference> preferences;
+
+    public ActivityType() {
     }
 
     public Integer getId() {
@@ -52,5 +57,13 @@ public class EventType {
 
     public void setActivities(List<Activity> activities) {
         this.activities = activities;
+    }
+
+    public List<PersonPreference> getPreferences() {
+        return preferences;
+    }
+
+    public void setPreferences(List<PersonPreference> preferences) {
+        this.preferences = preferences;
     }
 }

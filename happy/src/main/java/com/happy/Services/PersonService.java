@@ -34,23 +34,22 @@ public class PersonService {
                 .orElseThrow(() -> new PersonTypeNorFoundException(newPerson.getPersonTypeId()));
         return personRepository.findById(id)
                 .map(person -> {
-                    person.setFirstName(newPerson.getFirstName());
-                    person.setLastName(newPerson.getLastName());
-                    person.setEmail(newPerson.getEmail());
-                    person.setAge(newPerson.getAge());
-                    person.setPersonTypeId(personType);
-                    return personRepository.save(person);
+                    return getPerson(newPerson, personType, person);
                 })
                 .orElseGet(() -> {
                     Person p = new Person();
                     p.setId(id);
-                    p.setFirstName(newPerson.getFirstName());
-                    p.setLastName(newPerson.getLastName());
-                    p.setEmail(newPerson.getEmail());
-                    p.setAge(newPerson.getAge());
-                    p.setPersonTypeId(personType);
-                    return personRepository.save(p);
+                    return getPerson(newPerson, personType, p);
                 });
+    }
+
+    private Person getPerson(PersonDTO newPerson, PersonType personType, Person person) {
+        person.setFirstName(newPerson.getFirstName());
+        person.setLastName(newPerson.getLastName());
+        person.setEmail(newPerson.getEmail());
+        person.setAge(newPerson.getAge());
+        person.setPersonTypeId(personType);
+        return personRepository.save(person);
     }
 
     public Person newPerson(PersonDTO newPerson){
@@ -59,12 +58,7 @@ public class PersonService {
         PersonType personType = personTypeRepository.findById(newPerson.getPersonTypeId())
                 .orElseThrow(() -> new PersonTypeNorFoundException(newPerson.getPersonTypeId()));
 
-        p.setFirstName(newPerson.getFirstName());
-        p.setLastName(newPerson.getLastName());
-        p.setEmail(newPerson.getEmail());
-        p.setAge(newPerson.getAge());
-        p.setPersonTypeId(personType);
-        return personRepository.save(p);
+        return getPerson(newPerson, personType, p);
     }
 
     public void deletePersonById(Integer id){

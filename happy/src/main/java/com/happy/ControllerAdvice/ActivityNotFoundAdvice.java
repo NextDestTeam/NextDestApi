@@ -1,16 +1,16 @@
 package com.happy.ControllerAdvice;
 
-import com.happy.Exceptions.PersonNotFoundException;
+import com.happy.Exceptions.ActivityNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-public class PersonNotFoundAdvice {
+public class ActivityNotFoundAdvice {
     @ResponseBody
-    @ExceptionHandler(PersonNotFoundException.class)
+    @ExceptionHandler(ActivityNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    String personNotFoundHandler(PersonNotFoundException ex) {
+    String activityNotFoundHandler(ActivityNotFoundException ex) {
         return ex.getMessage();
     }
 }

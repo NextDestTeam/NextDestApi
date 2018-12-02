@@ -51,6 +51,16 @@ public class Person {
     @JsonIgnore
     private Login loginId;
 
+    @OneToMany(mappedBy = "personPreferenceId", cascade = CascadeType.PERSIST)
+    @JsonIdentityReference(alwaysAsId = true)
+    @JsonIgnore
+    private List<PersonPreference> preferences;
+
+    @OneToMany(mappedBy = "personReactionId", cascade = CascadeType.PERSIST)
+    @JsonIdentityReference(alwaysAsId = true)
+    @JsonIgnore
+    private List<Reaction> reactions;
+
 
     public Person(){
 
@@ -126,5 +136,21 @@ public class Person {
 
     public void setLoginId(Login loginId) {
         this.loginId = loginId;
+    }
+
+    public List<PersonPreference> getPreferences() {
+        return preferences;
+    }
+
+    public void setPreferences(List<PersonPreference> preferences) {
+        this.preferences = preferences;
+    }
+
+    public List<Reaction> getReactions() {
+        return reactions;
+    }
+
+    public void setReactions(List<Reaction> reactions) {
+        this.reactions = reactions;
     }
 }
