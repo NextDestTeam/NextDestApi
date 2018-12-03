@@ -1,6 +1,6 @@
 package com.happy.DTO;
 
-public class PersonPrefernceDTO {
+public class PersonPreferenceDTO {
     private Integer id;
     private Integer personPreferenceId;
     private Integer activityTypeId;
