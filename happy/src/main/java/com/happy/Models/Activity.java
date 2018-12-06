@@ -134,14 +134,6 @@ public class Activity {
         this.person = person;
     }
 
-    public ActivityType getEventType() {
-        return activityType;
-    }
-
-    public void setEventType(ActivityType eventType) {
-        this.activityType = eventType;
-    }
-
     public String getImage() {
         return image;
     }
