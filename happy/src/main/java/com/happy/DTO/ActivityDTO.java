@@ -13,6 +13,7 @@ public class ActivityDTO {
     private String image;
     private Integer person;
     private Integer activityType;
+    private Integer imgageId;
 
     public Integer getId() {
         return id;
@@ -92,5 +93,13 @@ public class ActivityDTO {
 
     public void setActivityType(Integer activityType) {
         this.activityType = activityType;
+    }
+
+    public Integer getImgageId() {
+        return imgageId;
+    }
+
+    public void setImgageId(Integer imgageId) {
+        this.imgageId = imgageId;
     }
 }

@@ -5,8 +5,6 @@ import java.util.Date;
 public class ActivityFilterDTO {
     private Integer price;
     private Integer activityTypeId;
-    private Date startDate;
-    private Date endDate;
     private String name;
 
     public Integer getPrice() {
@@ -23,22 +21,6 @@ public class ActivityFilterDTO {
 
     public void setActivityTypeId(Integer activityTypeId) {
         this.activityTypeId = activityTypeId;
-    }
-
-    public Date getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
-
-    public Date getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
     }
 
     public String getName() {

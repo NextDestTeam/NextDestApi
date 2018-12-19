@@ -50,10 +50,6 @@ public class ActivityService {
                 activitySet.addAll(activityRepository.findActivitiesByActivityType(activityType));
             }
 
-            if(filter.getStartDate() != null && filter.getEndDate() != null){
-                activitySet.addAll(activityRepository.findActivitiesByDateBetween(filter.getStartDate(), filter.getEndDate()));
-            }
-
             if(filter.getPrice() != null){
                 activitySet.addAll(activityRepository.findActivitiesByPrice(filter.getPrice()));
             }

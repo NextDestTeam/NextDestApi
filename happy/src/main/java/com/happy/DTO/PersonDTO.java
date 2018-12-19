@@ -1,12 +1,6 @@
 package com.happy.DTO;
 
-import com.happy.Models.Activity;
-import com.happy.Models.Login;
-import com.happy.Models.PersonActivityComment;
-import com.happy.Models.PersonType;
-
 import java.util.Date;
-import java.util.List;
 
 public class PersonDTO {
     private Integer id;

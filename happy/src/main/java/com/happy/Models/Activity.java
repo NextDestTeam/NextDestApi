@@ -59,6 +59,12 @@ public class Activity {
     @JsonIgnore
     private List<Reaction> reactions;
 
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "activityImageId")
+    @JsonIdentityReference(alwaysAsId = true)
+    @JsonIgnore
+    private Image imageActivityId;
+
     public List<Reaction> getReactions() {
         return reactions;
     }
@@ -156,5 +162,13 @@ public class Activity {
 
     public void setActivityType(ActivityType activityType) {
         this.activityType = activityType;
+    }
+
+    public Image getImageActivityId() {
+        return imageActivityId;
+    }
+
+    public void setImageActivityId(Image imageActivityId) {
+        this.imageActivityId = imageActivityId;
     }
 }

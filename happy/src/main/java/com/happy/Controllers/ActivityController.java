@@ -23,14 +23,10 @@ public class ActivityController {
     @GetMapping("/activitiesFilter&name={name}&activityType={at}&startDate={sd}&endDate={ed}&price={price}")
     public List<Activity> getAllActivitiesByFilter(@RequestParam(value = "name", required = false) String name,
                                                    @RequestParam(value = "at", required = false) Integer at,
-                                                   @RequestParam(value = "sd", required = false) Date sd,
-                                                   @RequestParam(value = "ed", required = false) Date ed,
                                                    @RequestParam(value = "price", required = false) Integer price){
         ActivityFilterDTO filter = new ActivityFilterDTO();
         filter.setActivityTypeId(at);
         filter.setName(name);
-        filter.setStartDate(sd);
-        filter.setEndDate(ed);
         filter.setPrice(price);
         return activityService.getAllActivitiesByFilter(filter);
     }

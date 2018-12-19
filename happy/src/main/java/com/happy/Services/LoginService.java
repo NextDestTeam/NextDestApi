@@ -29,6 +29,10 @@ public class LoginService {
                 .orElseThrow(() -> new LoginNotFoundException(id));
     }
 
+    public Login getLoginByName(String name){
+        return loginRepository.findByLogin(name);
+    }
+
     public Login newLogin(LoginDTO newLogin) {
         return getLogin(newLogin);
     }

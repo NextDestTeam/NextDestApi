@@ -23,6 +23,11 @@ public class LoginController {
         return loginService.getLoginById(id);
     }
 
+    @GetMapping("/loginName/{name}")
+    public Login getLoginByName(@PathVariable String name){
+        return loginService.getLoginByName(name);
+    }
+
     @PostMapping("/logins")
     public Login newLogin(@RequestBody LoginDTO login){
         return loginService.newLogin(login);

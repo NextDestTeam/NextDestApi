@@ -11,5 +11,6 @@ public interface ActivityRepository extends JpaRepository<Activity, Integer> {
     public List<Activity> findActivitiesByActivityType(ActivityType activityType);
     public List<Activity> findActivitiesByPrice(Integer price);
     public List<Activity> findActivitiesByNameContains(String activityName);
-    public List<Activity> findActivitiesByDateBetween(Date initialDate, Date endDate);
+    public List<Activity> findActivitiesByPriceBetween(Integer initialPrice, Integer endPrice);
+    public List<Activity> findActivitiesByPriceGreaterThanEqual(Integer price);
 }
