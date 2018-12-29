@@ -8,7 +8,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
 
 @Data
 @Entity
-@Table(name = "person")
+@Table(name = "reaction")
 public class Reaction {
     @Id
     @GeneratedValue(strategy=SEQUENCE)

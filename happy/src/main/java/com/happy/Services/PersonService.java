@@ -1,10 +1,12 @@
 package com.happy.Services;
 
 import com.happy.DTO.PersonDTO;
+import com.happy.Exceptions.LoginNotFoundException;
 import com.happy.Exceptions.PersonNotFoundException;
 import com.happy.Exceptions.PersonTypeNorFoundException;
 import com.happy.Models.Person;
 import com.happy.Models.PersonType;
+import com.happy.Repositories.LoginRepository;
 import com.happy.Repositories.PersonRepository;
 import com.happy.Repositories.PersonTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,9 @@ public class PersonService {
     @Autowired
     private PersonTypeRepository personTypeRepository;
 
+    @Autowired
+    private LoginRepository loginRepository;
+
     public List<Person> findAllPersons(){
         return personRepository.findAll();
     }
@@ -30,7 +35,7 @@ public class PersonService {
     }
 
     public Person addOrReplace(PersonDTO newPerson, Integer id){
-        PersonType personType = personTypeRepository.findById(newPerson.getPersonTypeId())
+        PersonType personType = personTypeRepository.findById(id)
                 .orElseThrow(() -> new PersonTypeNorFoundException(newPerson.getPersonTypeId()));
         return personRepository.findById(id)
                 .map(person -> {
@@ -49,6 +54,8 @@ public class PersonService {
         person.setEmail(newPerson.getEmail());
         person.setAge(newPerson.getAge());
         person.setPersonTypeId(personType);
+        person.setLoginId(loginRepository.findById(newPerson.getLoginId()).
+                orElseThrow(() -> new LoginNotFoundException(newPerson.getLoginId())));
         return personRepository.save(person);
     }
 
