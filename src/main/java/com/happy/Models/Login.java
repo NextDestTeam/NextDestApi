@@ -24,7 +24,7 @@ public class Login {
     private String password;
 
     @OneToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "loginId")
+    @JoinColumn(name = "personId")
     @JsonIdentityReference(alwaysAsId = true)
     @JsonIgnore
     private Person personId;

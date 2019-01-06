@@ -46,7 +46,7 @@ public class Person {
     List<PersonActivityComment> comments;
 
     @OneToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "personId")
+    @JoinColumn(name = "loginId")
     @JsonIdentityReference(alwaysAsId = true)
     @JsonIgnore
     private Login loginId;
