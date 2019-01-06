@@ -15,7 +15,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
 @Table(name = "activity_type")
 public class ActivityType {
     @Id
-    @GeneratedValue(strategy=SEQUENCE)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "id")
     private Integer id;
 

@@ -12,7 +12,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
 @Table(name = "person_preference")
 public class PersonPreference {
     @Id
-    @GeneratedValue(strategy=SEQUENCE)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "id")
     private Integer id;
 

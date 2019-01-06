@@ -11,7 +11,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
 @Table(name = "reaction")
 public class Reaction {
     @Id
-    @GeneratedValue(strategy=SEQUENCE)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "id")
     private Integer id;
 

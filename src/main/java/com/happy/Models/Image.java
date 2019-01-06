@@ -13,7 +13,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
 @Table(name = "image")
 public class Image {
     @Id
-    @GeneratedValue(strategy=SEQUENCE)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "id")
     private Integer id;
 

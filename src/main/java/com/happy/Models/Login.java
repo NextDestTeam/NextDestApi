@@ -13,7 +13,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
 @Table(name = "login")
 public class Login {
     @Id
-    @GeneratedValue(strategy=SEQUENCE)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "id")
     private Integer id;
 
