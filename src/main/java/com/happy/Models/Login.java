@@ -1,8 +1,6 @@
 package com.happy.Models;
 
-import com.fasterxml.jackson.annotation.JsonIdentityReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -12,6 +10,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
 @Data
 @Entity
 @Table(name = "login")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
 public class Login {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -26,7 +25,6 @@ public class Login {
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "person_id", referencedColumnName="ID")
-    @JsonManagedReference
     @JsonIgnore
     private Person personId;
 

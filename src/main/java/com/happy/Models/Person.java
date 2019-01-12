@@ -1,8 +1,6 @@
 package com.happy.Models;
 
-import com.fasterxml.jackson.annotation.JsonIdentityReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -14,6 +12,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
 @Data
 @Entity
 @Table(name = "person")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
 public class Person {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -47,7 +46,6 @@ public class Person {
     List<PersonActivityComment> comments;
 
     @OneToOne(mappedBy = "personId")
-    @JsonManagedReference
     @JsonIgnore
     private Login loginId;
 
