@@ -58,7 +58,7 @@ public class Activity {
     private List<Reaction> reactions;
 
     @OneToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "activityImageId")
+    @JoinColumn(name = "image_id")
     @JsonIdentityReference(alwaysAsId = true)
     @JsonIgnore
     private Image imageActivityId;

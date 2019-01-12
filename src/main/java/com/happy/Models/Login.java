@@ -25,7 +25,7 @@ public class Login {
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JsonIdentityReference(alwaysAsId = true)
-    @JoinColumn(name = "id", nullable = false)
+    @JoinColumn(name = "person_id", nullable = false)
     @JsonIgnore
     private Person personId;
 
