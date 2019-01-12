@@ -23,7 +23,7 @@ public class Login {
     @Column(name = "password")
     private String password;
 
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "person_id", nullable = false)
     @JsonIgnore
     private Person personId;

@@ -45,9 +45,7 @@ public class Person {
     @JsonIgnore
     List<PersonActivityComment> comments;
 
-    @OneToOne(fetch = FetchType.LAZY,
-            cascade =  CascadeType.ALL,
-            mappedBy = "personId")
+    @OneToOne(mappedBy = "personId")
     @JsonIdentityReference(alwaysAsId = true)
     @JsonIgnore
     private Login loginId;
