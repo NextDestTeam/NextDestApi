@@ -35,7 +35,7 @@ public class Person {
     @JoinColumn(name = "personTypeId", referencedColumnName = "id")
     private PersonType personTypeId;
 
-    @OneToMany(mappedBy = "person", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "activityPerson", cascade = CascadeType.PERSIST)
     @JsonIdentityReference(alwaysAsId = true)
     @JsonIgnore
     List<Activity> activities;

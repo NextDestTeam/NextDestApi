@@ -9,8 +9,6 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-import static javax.persistence.GenerationType.SEQUENCE;
-
 @Data
 @Entity
 @Table(name = "activity")
@@ -42,8 +40,8 @@ public class Activity {
     private String image;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "person", referencedColumnName = "id")
-    private Person person;
+    @JoinColumn(name = "activityPerson", referencedColumnName = "id")
+    private Person activityPerson;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "activityType", referencedColumnName = "id")
@@ -132,12 +130,12 @@ public class Activity {
         this.date = date;
     }
 
-    public Person getPerson() {
-        return person;
+    public Person getActivityPerson() {
+        return activityPerson;
     }
 
-    public void setPerson(Person person) {
-        this.person = person;
+    public void setActivityPerson(Person activityPerson) {
+        this.activityPerson = activityPerson;
     }
 
     public String getImage() {

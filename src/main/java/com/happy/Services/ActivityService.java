@@ -94,7 +94,7 @@ public class ActivityService {
         activity.setImage(newActivity.getImage());
         activity.setLocation(newActivity.getLocation());
         activity.setName(newActivity.getName());
-        activity.setPerson(p);
+        activity.setActivityPerson(p);
         activity.setPrice(newActivity.getPrice());
         activity.setShortDescription(newActivity.getShortDescription());
 
