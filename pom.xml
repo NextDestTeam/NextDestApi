@@ -6,7 +6,7 @@
 	<groupId>com.happy</groupId>
 	<artifactId>happy</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<name>happy</name>
 	<description>Rest Web service for the HappyWeekend application</description>
@@ -63,11 +63,6 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>2.6.1</version>
 			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-tomcat</artifactId>
-			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 	<build>
