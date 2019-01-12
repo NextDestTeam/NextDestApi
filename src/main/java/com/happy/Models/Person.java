@@ -12,7 +12,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
 @Data
 @Entity
 @Table(name = "person")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "ID")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
 public class Person {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
