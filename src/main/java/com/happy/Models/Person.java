@@ -48,6 +48,7 @@ public class Person {
 
     @OneToOne(mappedBy = "personId")
     @JsonManagedReference
+    @JsonIgnore
     private Login loginId;
 
     @OneToMany(mappedBy = "personPreferenceId", cascade = CascadeType.PERSIST)
