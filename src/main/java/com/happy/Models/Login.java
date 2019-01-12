@@ -25,6 +25,7 @@ public class Login {
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "person_id", nullable = false)
+    @JsonIgnore
     private Person personId;
 
     public Login() {
