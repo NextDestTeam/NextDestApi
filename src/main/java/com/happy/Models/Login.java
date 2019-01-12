@@ -27,6 +27,7 @@ public class Login {
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "person_id", referencedColumnName="ID")
     @JsonManagedReference
+    @JsonIgnore
     private Person personId;
 
     public Login() {
