@@ -46,7 +46,6 @@ public class Person {
     List<PersonActivityComment> comments;
 
     @OneToOne(mappedBy = "personId")
-    @JsonIgnore
     private Login loginId;
 
     @OneToMany(mappedBy = "personPreferenceId", cascade = CascadeType.PERSIST)
