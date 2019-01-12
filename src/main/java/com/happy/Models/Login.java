@@ -23,7 +23,7 @@ public class Login {
     @Column(name = "password")
     private String password;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinColumn(name = "personId")
     @JsonIdentityReference(alwaysAsId = true)
     @JsonIgnore
