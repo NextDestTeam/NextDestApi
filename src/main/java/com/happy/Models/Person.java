@@ -12,7 +12,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
 @Data
 @Entity
 @Table(name = "person")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "ID")
 public class Person {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -46,7 +46,6 @@ public class Person {
     List<PersonActivityComment> comments;
 
     @OneToOne(mappedBy = "personId")
-    @JsonIgnore
     private Login loginId;
 
     @OneToMany(mappedBy = "personPreferenceId", cascade = CascadeType.PERSIST)
