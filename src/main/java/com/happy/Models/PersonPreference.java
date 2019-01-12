@@ -17,11 +17,11 @@ public class PersonPreference {
     private Integer id;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "personId", referencedColumnName = "id")
+    @JoinColumn(name = "person_id", referencedColumnName = "id")
     private Person personPreferenceId;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "activityTypeId", referencedColumnName = "id")
+    @JoinColumn(name = "activity_type_id", referencedColumnName = "id")
     private ActivityType activityTypeId;
 
     public Integer getId() {

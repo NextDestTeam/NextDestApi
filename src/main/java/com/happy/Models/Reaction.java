@@ -19,11 +19,11 @@ public class Reaction {
     private String reaction;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "personReactionId", referencedColumnName = "id")
+    @JoinColumn(name = "person_id", referencedColumnName = "id")
     private Person personReactionId;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "activityReactionId", referencedColumnName = "id")
+    @JoinColumn(name = "activity", referencedColumnName = "id")
     private Activity activityReactionId;
 
     public Integer getId() {

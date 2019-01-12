@@ -19,11 +19,11 @@ public class PersonActivityComment {
     private String comment;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "activityId", referencedColumnName = "id")
+    @JoinColumn(name = "activity_id", referencedColumnName = "id")
     private Activity activityId;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "personId", referencedColumnName = "id")
+    @JoinColumn(name = "person_id", referencedColumnName = "id")
     private Person personId;
 
     public PersonActivityComment() {

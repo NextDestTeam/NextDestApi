@@ -32,7 +32,7 @@ public class Person {
     private Date age;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "personTypeId", referencedColumnName = "id")
+    @JoinColumn(name = "person_type_id", referencedColumnName = "id")
     private PersonType personTypeId;
 
     @OneToMany(mappedBy = "activityPerson", cascade = CascadeType.PERSIST)
