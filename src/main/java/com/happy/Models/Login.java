@@ -23,8 +23,8 @@ public class Login {
     @Column(name = "password")
     private String password;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "person_id", referencedColumnName = "id")
+    @OneToOne
+    @JoinColumn(name = "person_id")
     @JsonIgnore
     private Person personId;
 
