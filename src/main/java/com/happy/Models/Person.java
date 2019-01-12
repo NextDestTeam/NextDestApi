@@ -2,6 +2,7 @@ package com.happy.Models;
 
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -46,6 +47,7 @@ public class Person {
     List<PersonActivityComment> comments;
 
     @OneToOne(mappedBy = "personId")
+    @JsonManagedReference
     private Login loginId;
 
     @OneToMany(mappedBy = "personPreferenceId", cascade = CascadeType.PERSIST)
