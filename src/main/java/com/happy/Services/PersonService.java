@@ -34,6 +34,10 @@ public class PersonService {
                 .orElseThrow(() -> new PersonNotFoundException(id));
     }
 
+    public Person findByName(String name){
+        return personRepository.findPersonByFirstName(name);
+    }
+
     public Person addOrReplace(PersonDTO newPerson, Integer id){
         PersonType personType = personTypeRepository.findById(id)
                 .orElseThrow(() -> new PersonTypeNorFoundException(newPerson.getPersonTypeId()));

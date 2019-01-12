@@ -45,7 +45,7 @@ public class Person {
     @JsonIgnore
     List<PersonActivityComment> comments;
 
-    @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "loginId")
     @JsonIdentityReference(alwaysAsId = true)
     @JsonIgnore

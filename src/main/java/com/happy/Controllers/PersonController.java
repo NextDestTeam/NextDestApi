@@ -25,6 +25,11 @@ public class PersonController {
         return personService.findAllPersons();
     }
 
+    @GetMapping("/personName/{name}")
+    public Person getPersonByName(@PathVariable String name){
+        return personService.findByName(name);
+    }
+
     @PostMapping("/persons")
     public Person newPerson(@RequestBody PersonDTO person){
         return personService.newPerson(person);
