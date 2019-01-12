@@ -40,7 +40,7 @@ public class Activity {
     private String image;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "activityPerson", referencedColumnName = "id")
+    @JoinColumn(name = "person_id", referencedColumnName = "id")
     private Person activityPerson;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
