@@ -6,7 +6,7 @@
 	<groupId>com.happy</groupId>
 	<artifactId>happy</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>happy</name>
 	<description>Rest Web service for the HappyWeekend application</description>
@@ -73,6 +73,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
-
 </project>
