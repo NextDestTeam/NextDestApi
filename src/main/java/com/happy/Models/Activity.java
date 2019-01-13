@@ -1,7 +1,9 @@
 package com.happy.Models;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -12,6 +14,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "activity")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
 public class Activity {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -57,10 +60,8 @@ public class Activity {
     @JsonIgnore
     private List<Reaction> reactions;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "image_id")
-    @JsonIdentityReference(alwaysAsId = true)
-    @JsonIgnore
+    @OneToOne(cascade = CascadeType.ALL, optional = false)
+    @JoinColumn(name = "image_id", referencedColumnName="id")
     private Image imageActivityId;
 
     public List<Reaction> getReactions() {

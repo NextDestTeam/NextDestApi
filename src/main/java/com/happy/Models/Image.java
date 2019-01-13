@@ -1,7 +1,9 @@
 package com.happy.Models;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -11,6 +13,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
 @Data
 @Entity
 @Table(name = "image")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
 public class Image {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -20,13 +23,10 @@ public class Image {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "imageid")
+    @Column(name = "image")
     private byte[] imageid;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "imageActivityId")
-    @JsonIdentityReference(alwaysAsId = true)
-    @JsonIgnore
+    @OneToOne(mappedBy = "imageActivityId")
     private Activity activityImageId;
 
     public Integer getId() {
