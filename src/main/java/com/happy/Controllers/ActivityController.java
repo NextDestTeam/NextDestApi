@@ -7,6 +7,7 @@ import com.happy.Services.ActivityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -18,6 +19,17 @@ public class ActivityController {
     @GetMapping("/activities")
     public List<Activity> getAllActivities(){
         return activityService.getAllActivities();
+    }
+
+    @GetMapping("/activitiesId")
+    public List<Integer> getAllActivitiesId(){
+        List<Integer> ids = new ArrayList<>();
+        List<Activity> activities = activityService.getAllActivities();
+        for (Activity a :
+                activities) {
+            ids.add(a.getId());
+        }
+        return ids;
     }
 
     @GetMapping("/activitiesFilter&name={name}&activityType={at}&startDate={sd}&endDate={ed}&price={price}")
