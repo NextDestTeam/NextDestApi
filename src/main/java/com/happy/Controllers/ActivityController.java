@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 public class ActivityController {
@@ -18,7 +19,7 @@ public class ActivityController {
 
     @GetMapping("/activities")
     public List<Activity> getAllActivities(){
-        return activityService.getAllActivities();
+        return activityService.getAllActivities().stream().filter(x->"P".equals(x.getStatus())).collect(Collectors.toList());
     }
 
     @GetMapping("/activitiesId")
@@ -27,7 +28,8 @@ public class ActivityController {
         List<Activity> activities = activityService.getAllActivities();
         for (Activity a :
                 activities) {
-            ids.add(a.getId());
+            if("P".equals(a.getStatus()))
+                ids.add(a.getId());
         }
         return ids;
     }

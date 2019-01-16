@@ -42,6 +42,9 @@ public class Activity {
     @Column(name = "image")
     private String image;
 
+    @Column(name = "status")
+    private String status;
+
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "person_id", referencedColumnName = "id")
     private Person activityPerson;
